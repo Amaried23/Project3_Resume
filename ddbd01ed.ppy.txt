@@ -1,0 +1,19 @@
+﻿
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Your branch is up-to-date with 'origin/master'.
+#
+# Changes to be committed:
+#	new file:   README.md
+#	new file:   css/style.css
+#	new file:   images/197x148.gif
+#	new file:   images/alexis.jpg
+#	new file:   images/fry.jpg
+#	new file:   images/projectone.png
+#	new file:   index.html
+#	new file:   js/helper.js
+#	new file:   js/jQuery.js
+#	new file:   js/resumeBuilder.js
+#
+
