@@ -11,27 +11,7 @@ var bio = {
 "skills": [
    "javascript", "programming", "health insurance coordinator"
 ],
-  "bioPic": "images/alexis.jpg"
-}
-
-
-var work = {
-  "jobs": [
-   {
-    "employer": "Seaview Orthopaedics",
-    "title": "Surgical Authorization Coordinator",
-    "dates": "November 2015- Current",
-    "description": "Authorize surgical procedures through patients auto insurance for patients involved in motor vehicle accidents",
-    "location": "Ocean Township, NJ"
-   },
-   {
-    "employer": "Lincare/Sleep Circle",
-    "title": "DME Authorization Coordinator",
-    "dates": "October 2012-November 2015",
-    "description": "Authorize BiPaP, CPaP, and Oxygen equipment for patients with sleep apnea",
-    "location": "Eatontown, NJ"
-   }
-  ]
+  "biopic": "images/alexis.jpg"
 };
 
 var education = {
@@ -39,19 +19,42 @@ var education = {
 "schools" : [
   {
     "name" : "Brookdale Community College",
-    "degree" : "Associates Degree",
     "location" : "Lincroft, NJ",
-    "major" : "Computer Science",
-    "dates" : "2015-2016"
+    "degree" : "Associates Degree",
+    "majors": [
+         "Computer Science", "Software Engineering"
+  ],
+    "dates" : "2015-2016",
   }],
   
 "online" : {
     "title" : "NanoDegree Front End Web Developer",
-    "name" : "Udacity",
-    "dates" : "Jan. 15 2016 - present",
+    "school" : "Udacity",
+    "dates" : "January 2016-September 2016",
     "url" : "https://www.udacity.com",
   }
 };
+
+var work = {
+  "jobs": [
+   {
+    "employer": "Seaview Orthopaedics",
+    "title": "Surgical Authorization Coordinator",
+    "location": "Ocean Township, NJ",
+    "dates": "November 2015- Current",
+    "description": "Authorize surgical procedures through patients auto insurance for patients involved in motor vehicle accidents",
+   },
+   {
+    "employer": "Lincare/Sleep Circle",
+    "title": "DME Authorization Coordinator",
+    "location": "Eatontown, NJ",
+    "dates": "October 2012-November 2015",
+    "description": "Authorize BiPaP, CPaP, and Oxygen equipment for patients with sleep apnea",
+    
+   }
+  ]
+};
+
 
 var projects = {
   "projects" : [
@@ -59,18 +62,20 @@ var projects = {
     "title" : "P.1 Portfolio Site",
     "dates" : "2/25/16",
     "description" : "Using bootstrap for page layout, editing css, and adding a column based layout to form a Portfolio",
-    "image" : "images/projectone.png",
-       }
+    "image" : [
+    "images/projectone.png",
+    ],
+   }
   ]
 };
 
 bio.display = function() {
 
-var name = "Alexis DeLucia";
-var formattedName = HTMLheaderName.replace("%data%", name);
+bio.name = "Alexis DeLucia";
+var formattedName = HTMLheaderName.replace("%data%", bio.name);
 
-var role = "Web Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
+bio.role = "Web Developer";
+var formattedRole = HTMLheaderRole.replace("%data%", bio.role);
   
 $("#header").prepend(formattedName+ " "+formattedRole);
 
@@ -93,31 +98,24 @@ $("#footerContacts").append(formattedLocation);
 var formattedMessage = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 $("#header").append(formattedMessage);
 
-var formattedBiopic = HTMLbioPic.replace("%data%", bio.bioPic);
+var formattedBiopic = HTMLbioPic.replace("%data%", bio.biopic);
 $("#header").append(formattedBiopic);
-  
-}
 
-bio.display();
-
-
-bio.skills.display = function() {
 if(bio.skills.length>0) {
 $('#header').append(HTMLskillsStart);
 var formattedSkill = HTMLskills.replace('%data%', bio.skills[0]);
-$('#skills').append(formattedSkill);
+$('#header').append(formattedSkill);
  
 var formattedSkill = HTMLskills.replace('%data%', bio.skills[1]);
-$('#skills').append(formattedSkill);
+$('#header').append(formattedSkill);
  
 var formattedSkill = HTMLskills.replace('%data%', bio.skills[2]);
-$('#skills').append(formattedSkill);
+$('#header').append(formattedSkill);
   
 var formattedSkill = HTMLskills.replace('%data%', bio.skills[3]);
  }
 }
-
-bio.skills.display();
+bio.display();
 
 
 projects.display = function() {
@@ -166,7 +164,7 @@ $(".work-entry:last").append(formattedWorkLocation);
 work.display();
 
 
-function displayEducation () {
+education.display = function () {
 for (var school in education.schools) {
 $("#education").append(HTMLschoolStart); 
  var formattedSchoolName =  HTMLschoolName.replace("%data%",education.schools[school].name);
@@ -179,13 +177,13 @@ $("#education").append(HTMLschoolStart);
  var formattedDegree = HTMLschoolDegree.replace("%data%",education.schools[school].degree);
  $(".education-entry:last").append(formattedDegree+""+formattedSchoolDates);
 
- var formattedMajor = HTMLschoolMajor.replace("%data%",education.schools[school].major);
+ var formattedMajor = HTMLschoolMajor.replace("%data%",education.schools[0].majors);
  $(".education-entry:last").append(formattedMajor);
 
 $("#education").append(HTMLonlineClasses);
 
 var formattedonlineTitle = HTMLonlineTitle.replace("%data%",education.online.title);
-var formattedonlineSchool = HTMLonlineSchool.replace("%data%",education.online.name);
+var formattedonlineSchool = HTMLonlineSchool.replace("%data%",education.online.school);
 $(".regular-heading:last").append(formattedonlineTitle+ " "+formattedonlineSchool);
 
 var formattedonlineDates = HTMLonlineDates.replace("%data%",education.online.dates);
@@ -195,7 +193,7 @@ $(".regular-heading:last").append(formattedonlineUrl);
   }
 }  
 
-displayEducation();
+education.display();
 
 
 function inName() {
